@@ -1,20 +1,19 @@
 ﻿using System.IO;
-using NUnit.Framework;
+using Xunit;
 
 namespace Asn1.Tests {
-    [TestFixture]
     public class Asn1NullTests : BaseTest {
 
         private static readonly byte[] _etalon = { 0x05, 0x00 };
 
-        [Test]
+        [Fact]
         public void ReadTest() {
             var node = Asn1Node.ReadNode(new MemoryStream(_etalon));
             var typed = node as Asn1Null;
-            Assert.IsNotNull(typed);
+            Assert.NotNull(typed);
         }
 
-        [Test]
+        [Fact]
         public void WriteTest() {
             var node = new Asn1Null();
             var data = node.GetBytes();
