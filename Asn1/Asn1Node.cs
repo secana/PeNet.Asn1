@@ -67,6 +67,7 @@ namespace Asn1 {
                 case Asn1UniversalNodeType.ObjectId: return Asn1ObjectIdentifier.ReadFrom(stream);
                 case Asn1UniversalNodeType.Utf8String: return Asn1Utf8String.ReadFrom(stream);
                 case Asn1UniversalNodeType.PrintableString: return Asn1PrintableString.ReadFrom(stream);
+                case Asn1UniversalNodeType.Ia5String: return Asn1Ia5String.ReadFrom(stream);
                 case Asn1UniversalNodeType.UtcTime: return Asn1UtcTime.ReadFrom(stream);
                 case Asn1UniversalNodeType.Sequence: return Asn1Sequence.ReadFrom(stream);
                 case Asn1UniversalNodeType.Set: return Asn1Set.ReadFrom(stream);

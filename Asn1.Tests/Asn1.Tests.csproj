@@ -11,4 +11,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Asn1\Asn1.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="pidgin.pkcs7">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
