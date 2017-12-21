@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net461;netcoreapp1.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <Authors>Sergey Savchuk</Authors>
     <Company />
     <RepositoryUrl>https://github.com/SavchukSergey/asn1</RepositoryUrl>

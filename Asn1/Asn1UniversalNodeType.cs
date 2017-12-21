@@ -11,6 +11,7 @@
         Sequence = 0x10,
         Set = 0x11,
         PrintableString = 0x13,
+        Ia5String = 0x16,
         UtcTime = 0x17,
     }
 }
