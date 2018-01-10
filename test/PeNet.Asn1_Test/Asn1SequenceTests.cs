@@ -23,5 +23,12 @@ namespace PeNet.Asn1_Test {
             var data = node.GetBytes();
             AreEqual(_etalon, data);
         }
+
+        [Fact]
+        public void OverflowTest()
+        {
+            var cert = File.ReadAllBytes(@"overflow.pkcs7");
+            Assert.Throws<Asn1ParsingException>(() => Asn1Node.ReadNode(cert));
+        }
     }
 }
