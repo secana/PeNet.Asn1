@@ -43,6 +43,10 @@ namespace PeNet.Asn1 {
             var tagClass = (Asn1TagClass)(identifier >> 6);
             var tagForm = (Asn1TagForm)((identifier >> 5) & 1);
             var length = ReadTagLength(stream);
+            if (length > stream.Length)
+            {
+                throw new Asn1ParsingException($"Try to read more bytes from stream than exists {length} > {stream.Length}");
+            }
             var data = new byte[length];
             stream.Read(data, 0, length);
             stream = new MemoryStream(data);
