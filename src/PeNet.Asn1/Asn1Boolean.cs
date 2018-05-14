@@ -7,7 +7,7 @@ namespace PeNet.Asn1 {
         public const string NODE_NAME = "Boolean";
 
         public bool Value { get; set; }
-
+        public static byte TrueValue { get; set; } = 1;
         public Asn1Boolean(bool value) {
             Value = value;
         }
@@ -29,7 +29,7 @@ namespace PeNet.Asn1 {
         }
 
         protected override byte[] GetBytesCore() {
-            return new[] { (byte)(Value ? 1 : 0) };
+            return new[] { (byte)(Value ? TrueValue : 0) };
         }
 
         public new static Asn1Boolean Parse(XElement xNode) {
