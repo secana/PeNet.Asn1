@@ -16,7 +16,7 @@ namespace PeNet.Asn1_Test
         [Fact]
         public void GenericTest()
         {
-            var cert = File.ReadAllBytes(@"pidgin.pkcs7");
+            var cert = File.ReadAllBytes(@"./test_files/pidgin.pkcs7");
             var asn1 = Asn1Node.ReadNode(cert);
             Assert.NotNull(asn1);
         }

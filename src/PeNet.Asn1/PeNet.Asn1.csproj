@@ -6,7 +6,7 @@
     <RepositoryUrl>https://github.com/secana/asn1</RepositoryUrl>
     <Description>Asn1 is a tool for parsing and formating ASN1 files.</Description>
     <PackageTags>ASN.1, ASN, PeNet</PackageTags>
-    <Version>1.3.1</Version>
+    <Version>1.3.2</Version>
     <Copyright>Copyright © 2017</Copyright>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>PeNet.Asn1</PackageId>

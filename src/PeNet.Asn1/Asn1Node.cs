@@ -52,6 +52,10 @@ namespace PeNet.Asn1 {
             stream = new MemoryStream(data);
             if (tagClass == Asn1TagClass.Universal) {
                 var tag = ReadUniversalNode(type, tagForm, stream);
+
+                if(tag == null) // Unsupported type --> Use custom parser
+                    tag = Asn1CustomNode.ReadFrom(type, tagForm, stream);
+
                 tag.TagClass = tagClass;
                 return tag;
             } else {
@@ -77,7 +81,8 @@ namespace PeNet.Asn1 {
                 case Asn1UniversalNodeType.Sequence: return Asn1Sequence.ReadFrom(stream);
                 case Asn1UniversalNodeType.Set: return Asn1Set.ReadFrom(stream);
                 default:
-                    throw new NotSupportedException($"unsupported universal type {type}");
+                    //throw new NotSupportedException($"unsupported universal type {type}");
+                    return null;
             }
         }
 

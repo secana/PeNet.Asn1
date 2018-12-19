@@ -27,7 +27,7 @@ namespace PeNet.Asn1_Test {
         [Fact]
         public void OverflowTest()
         {
-            var cert = File.ReadAllBytes(@"overflow.pkcs7");
+            var cert = File.ReadAllBytes(@"./test_files/overflow.pkcs7");
             Assert.Throws<Asn1ParsingException>(() => Asn1Node.ReadNode(cert));
         }
     }
