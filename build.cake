@@ -1,5 +1,3 @@
-#tool nuget:?package=vswhere
-
 var target					= Argument("target", "Default");
 var solutionDir				= System.IO.Directory.GetCurrentDirectory();
 var testResultDir			= Argument("testResultDir", System.IO.Path.Combine(solutionDir, "test-results"));   // ./build.sh --target test -testResultsDir="somedir"
@@ -8,13 +6,6 @@ var apiKey					= Argument<string>("apiKey", null);													// ./build.sh --t
 var testFailed				= false;
 
 var peNetProj = System.IO.Path.Combine(solutionDir, "src", "PeNet.Asn1", "PeNet.Asn1.csproj");
-
-// Get the latest VS installation to find the latest MSBuild tools.
-DirectoryPath vsLatest  = VSWhereLatest();
-FilePath msBuildPathX64 = (vsLatest==null)
-                            ? null
-                            : vsLatest.CombineWithFilePath("./MSBuild/15.0/Bin/amd64/MSBuild.exe");
-
 
 Information("Solution Directory: {0}", solutionDir);
 Information("Test Results Directory: {0}", testResultDir);
@@ -61,9 +52,7 @@ Task("Build")
 	.IsDependentOn("Restore")
 	.Does(() =>
 	{
-		MSBuild(solutionDir, new MSBuildSettings {
-			ToolPath = msBuildPathX64,
-			Verbosity = Verbosity.Minimal,
+		DotNetCoreBuild(peNetProj, new DotNetCoreBuildSettings {
 			Configuration = "Release"
 		});
 	});

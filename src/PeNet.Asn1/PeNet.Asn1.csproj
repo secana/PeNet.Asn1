@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.6;netstandard2.0;net461;net40</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
     <Authors>Sergey Savchuk, Jan Jansen, Stefan Hausotte</Authors>
     <Company></Company>
     <RepositoryUrl>https://github.com/secana/asn1</RepositoryUrl>
