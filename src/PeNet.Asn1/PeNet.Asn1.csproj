@@ -13,7 +13,7 @@
     <Product>PeNet.Asn1</Product>
     <PackageIconUrl>https://raw.githubusercontent.com/secana/PeNet/master/src/PEditor/Icons/logo.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/secana/asn1</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/secana/asn1/master/LICENCE</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <AssemblyName>PeNet.Asn1</AssemblyName>
     <RootNamespace>PeNet.Asn1</RootNamespace>
     <SignAssembly>true</SignAssembly>
