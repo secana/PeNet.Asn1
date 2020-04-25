@@ -142,7 +142,7 @@ Task("Default")
 	.Does(() =>
 	{
 		Information("Build and test the whole solution.");
-		Information("To push the PeNet.Asn1 library to nuget.org use the cake build argument: -target push -apiKey=\"nuget api key\"");
+		Information("To push the PeNet.Asn1 library to nuget.org use the cake build argument: --target=\"push\" --apiKey=\"nuget api key\"");
 	});
 
 
