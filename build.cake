@@ -112,7 +112,7 @@ Task("Pack")
 Task("Push")
     .IsDependentOn("Pack")
     .Does(() => {
-        var package = GetFiles($"{artifactDir}/PeNet.Asn1.*.nupkg").ElementAt(0);
+        var package = GetFiles($"{artifactDir}/PeNet.Asn1.*.nupkg").ElementAt(0).ToString();
         var source = "https://www.nuget.org/api/v2/package";
 
         if(apiKey==null)
@@ -120,10 +120,10 @@ Task("Push")
 
         Information($"Push {package} to {source}");
 
-        NuGetPush(package, new NuGetPushSettings {
-            Source = source,
-            ApiKey = apiKey
-        });
+        DotNetCoreNuGetPush(package, new DotNetCoreNuGetPushSettings {
+			ApiKey = apiKey,
+			Source = source
+		});
     });
 
 Task("Default")
