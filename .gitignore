@@ -324,3 +324,6 @@ ASALocalRun/
 # MSBuild Binary and Structured Log
 *.binlog
 
+
+.fake
+.ionide
