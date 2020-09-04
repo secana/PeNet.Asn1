@@ -21,5 +21,17 @@ namespace PeNet.Asn1_Test {
             var data = node.GetBytes();
             AreEqual(_etalon, data);
         }
+
+        [Fact]
+        public void WriteWithTrailingZeroTest() {
+            var data = new byte[] { 0x06, 0x07, 0x2a, 0x85, 0x03, 0x02, 0x02, 0x24, 0x00 };
+
+            var node = Asn1Node.ReadNode(new MemoryStream(data));
+            var typed = node as Asn1ObjectIdentifier;
+            Assert.Equal("1.2.643.2.2.36.0", typed.Value);
+
+            var newData = typed.GetBytes();
+            AreEqual(data, newData);
+        }
     }
 }
