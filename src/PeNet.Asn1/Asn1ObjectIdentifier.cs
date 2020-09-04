@@ -101,6 +101,11 @@ namespace PeNet.Asn1 {
         }
 
         private static void Write(Stream mem, ulong val) {
+            if (val == 0) {
+                mem.WriteByte((byte)val);
+                return;
+            }
+
             var zero = true;
             for (var i = 9; i >= 0; i--) {
                 var subval = (val >> (i * 7)) & 0x7ful;

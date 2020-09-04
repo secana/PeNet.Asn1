@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace PeNet.Asn1 {
@@ -44,7 +45,9 @@ namespace PeNet.Asn1 {
             return new XElement(NODE_NAME,
                 new XAttribute("type", Type),
                 new XAttribute("form", TagForm),
-                ToHexString(Data));
+                Data == null ? new XAttribute("noData", "true") : null,
+                Data != null ? ToHexString(Data) : null,
+                Nodes.Select(_ => _.ToXElement()));
         }
 
         protected override byte[] GetBytesCore() {
@@ -63,8 +66,15 @@ namespace PeNet.Asn1 {
             var type = int.Parse(xNode.Attribute("type").Value);
             var form = (Asn1TagForm)Enum.Parse(typeof(Asn1TagForm), xNode.Attribute("form").Value);
             var tagClass = (Asn1TagClass)Enum.Parse(typeof(Asn1TagClass), xNode.Attribute("class").Value);
+            var noDataAttribute = xNode.Attribute("noData");
+            var noData = noDataAttribute != null && bool.Parse(noDataAttribute.Value);
             var res = new Asn1CustomNode(type, form) { TagClass = tagClass };
-            res.Data = ReadDataFromHexString(xNode.Value);
+            if (!noData)
+                res.Data = ReadDataFromHexString(xNode.Value);
+            foreach (var xChild in xNode.Elements()) {
+                var child = Parse(xChild);
+                res.Nodes.Add(child);
+            }
             return res;
         }
     }
