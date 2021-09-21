@@ -30,6 +30,6 @@
         GeneralString       = 0x1a, // Not supported by PeNet.Asn1
         UniversalString     = 0x1c, // Not supported by PeNet.Asn1
         CharacterString     = 0x1d, // Not supported by PeNet.Asn1
-        BmpString           = 0x1e  // Not supported by PeNet.Asn1
+        BmpString           = 0x1e
     }
 }

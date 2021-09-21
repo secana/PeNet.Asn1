@@ -77,6 +77,7 @@ namespace PeNet.Asn1 {
                 case Asn1UniversalNodeType.NumericString: return Asn1NumericString.ReadFrom(stream);
                 case Asn1UniversalNodeType.PrintableString: return Asn1PrintableString.ReadFrom(stream);
                 case Asn1UniversalNodeType.Ia5String: return Asn1Ia5String.ReadFrom(stream);
+                case Asn1UniversalNodeType.BmpString: return Asn1BmpString.ReadFrom(stream);
                 case Asn1UniversalNodeType.UtcTime: return Asn1UtcTime.ReadFrom(stream);
                 case Asn1UniversalNodeType.Sequence: return Asn1Sequence.ReadFrom(stream);
                 case Asn1UniversalNodeType.Set: return Asn1Set.ReadFrom(stream);
@@ -140,6 +141,8 @@ namespace PeNet.Asn1 {
                     return Asn1Null.Parse(xNode);
                 case Asn1BitString.NODE_NAME:
                     return Asn1BitString.Parse(xNode);
+                case Asn1BmpString.NODE_NAME:
+                    return Asn1BmpString.Parse(xNode);
                 case Asn1CustomNode.NODE_NAME:
                     return Asn1CustomNode.Parse(xNode);
                 default:
