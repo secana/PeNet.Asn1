@@ -37,13 +37,13 @@ jobs:
         uses: battila7/get-version-action@v2
 
       - name: Print Version
-        run: echo "Version $steps.get_version.outputs.version-without-v"
+        run: echo "Version ${steps.get_version.outputs.version-without-v}"
 
       - name: Replace Version
-        run: sed -i 's|<Version>0.0.0</Version>|'"$steps.get_version.outputs.version-without-v"'|' ./src/PeNet.Asn1/PeNet.Asn1.csproj
+        run: sed -i 's|<Version>0.0.0</Version>|'"${steps.get_version.outputs.version-without-v}"'|' ./src/PeNet.Asn1/PeNet.Asn1.csproj
 
       - name: Package
         run: dotnet pack -o artifacts
       
-      - name: Publish
-        run: dotnet nuget push artifacts/*.nupkg -k $secrets.NUGET_API_KEY
+      # - name: Publish
+      #   run: dotnet nuget push artifacts/*.nupkg -k $secrets.NUGET_API_KEY
