@@ -40,7 +40,7 @@ jobs:
         run: echo "Version ${{ steps.get_version.outputs.version-without-v }}"
 
       - name: Replace Version
-        run: sed -i 's|<Version>0.0.0</Version>|'"${{ steps.get_version.outputs.version-without-v }}"'|' ./src/PeNet.Asn1.csproj
+        run: sed -i 's|<Version>0.0.0</Version>|'"${{ steps.get_version.outputs.version-without-v }}"'|' ./src/PeNet.Asn1/PeNet.Asn1.csproj
 
       - name: Package
         run: dotnet pack -o artifacts
