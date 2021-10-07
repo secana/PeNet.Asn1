@@ -48,4 +48,4 @@ jobs:
         run: dotnet pack -c Release -o artifacts
       
       - name: Publish
-        run: dotnet nuget push artifacts/*.nupkg -k $secrets.NUGET_API_KEY -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push artifacts/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
