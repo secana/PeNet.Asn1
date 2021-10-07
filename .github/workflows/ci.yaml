@@ -4,10 +4,13 @@ on:
     branches:
       - master
       - devel
+    tags:
+      - 'v*'
   pull_request:
     branches:
       - master
       - devel
+
 
 
 jobs:
