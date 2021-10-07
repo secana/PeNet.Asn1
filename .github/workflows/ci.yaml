@@ -34,13 +34,15 @@ jobs:
 
     steps:
       - name: Get Version
-        uses: battila7/get-version-action@v2
+        uses: jannemattila/get-version-from-tag@v1
 
       - name: Print Version
-        run: echo ${{steps.get_version.outputs.version-without-v}}
+        run: |
+          VERSION=$(echo "${{ steps.get_version.outputs.version }}")
+          echo $VERSION
 
       - name: Replace Version
-        run: sed -i 's|<Version>0.0.0</Version>|'"${steps.get_version.outputs.version-without-v}"'|' ./src/PeNet.Asn1/PeNet.Asn1.csproj
+        run: sed -i 's|<Version>0.0.0</Version>|'"${{ steps.get_version.outputs.version }}"'|' ./src/PeNet.Asn1/PeNet.Asn1.csproj
 
       - name: Package
         run: dotnet pack -o artifacts
