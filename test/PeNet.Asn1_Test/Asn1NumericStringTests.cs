@@ -17,7 +17,7 @@ namespace PeNet.Asn1_Test {
 
         [Fact]
         public void WriteTest() {
-            var node = new Asn1NumericString { Value = "304741704700129" };
+            var node = new Asn1NumericString("304741704700129");
             var data = node.GetBytes();
             AreEqual(_etalon, data);
         }

@@ -14,13 +14,13 @@
         public new static PeNet.Asn1.Asn1BitString Parse(System.Xml.Linq.XElement xNode) { }
         public static PeNet.Asn1.Asn1BitString ReadFrom(System.IO.Stream stream) { }
     }
-    public class Asn1BmpString : PeNet.Asn1.Asn1Node
+    public class Asn1BmpString : PeNet.Asn1.Asn1StringNode
     {
         public const string NODE_NAME = "BMPString";
-        public Asn1BmpString() { }
+        public Asn1BmpString(string value) { }
         public override PeNet.Asn1.Asn1UniversalNodeType NodeType { get; }
         public override PeNet.Asn1.Asn1TagForm TagForm { get; }
-        public string Value { get; set; }
+        public override string Value { get; }
         protected override byte[] GetBytesCore() { }
         protected override System.Xml.Linq.XElement ToXElementCore() { }
         public new static PeNet.Asn1.Asn1BmpString Parse(System.Xml.Linq.XElement xNode) { }
@@ -62,14 +62,13 @@
         public new static PeNet.Asn1.Asn1CustomNode Parse(System.Xml.Linq.XElement xNode) { }
         public static PeNet.Asn1.Asn1CustomNode ReadFrom(PeNet.Asn1.Asn1UniversalNodeType type, PeNet.Asn1.Asn1TagForm tagForm, System.IO.Stream stream) { }
     }
-    public class Asn1Ia5String : PeNet.Asn1.Asn1Node
+    public class Asn1Ia5String : PeNet.Asn1.Asn1StringNode
     {
         public const string NODE_NAME = "IA5";
-        public Asn1Ia5String() { }
         public Asn1Ia5String(string value) { }
         public override PeNet.Asn1.Asn1UniversalNodeType NodeType { get; }
         public override PeNet.Asn1.Asn1TagForm TagForm { get; }
-        public string Value { get; set; }
+        public override string Value { get; }
         protected override byte[] GetBytesCore() { }
         protected override System.Xml.Linq.XElement ToXElementCore() { }
         public new static PeNet.Asn1.Asn1Ia5String Parse(System.Xml.Linq.XElement xNode) { }
@@ -122,13 +121,13 @@
         public new static PeNet.Asn1.Asn1Null Parse(System.Xml.Linq.XElement xNode) { }
         public static PeNet.Asn1.Asn1Null ReadFrom(System.IO.Stream stream) { }
     }
-    public class Asn1NumericString : PeNet.Asn1.Asn1Node
+    public class Asn1NumericString : PeNet.Asn1.Asn1StringNode
     {
         public const string NODE_NAME = "NumericString";
-        public Asn1NumericString() { }
+        public Asn1NumericString(string value) { }
         public override PeNet.Asn1.Asn1UniversalNodeType NodeType { get; }
         public override PeNet.Asn1.Asn1TagForm TagForm { get; }
-        public string Value { get; set; }
+        public override string Value { get; }
         protected override byte[] GetBytesCore() { }
         protected override System.Xml.Linq.XElement ToXElementCore() { }
         public new static PeNet.Asn1.Asn1NumericString Parse(System.Xml.Linq.XElement xNode) { }
@@ -191,13 +190,13 @@
     {
         public Asn1ParsingException(string message) { }
     }
-    public class Asn1PrintableString : PeNet.Asn1.Asn1Node
+    public class Asn1PrintableString : PeNet.Asn1.Asn1StringNode
     {
         public const string NODE_NAME = "PrintableString";
-        public Asn1PrintableString() { }
+        public Asn1PrintableString(string value) { }
         public override PeNet.Asn1.Asn1UniversalNodeType NodeType { get; }
         public override PeNet.Asn1.Asn1TagForm TagForm { get; }
-        public string Value { get; set; }
+        public override string Value { get; }
         protected override byte[] GetBytesCore() { }
         protected override System.Xml.Linq.XElement ToXElementCore() { }
         public new static PeNet.Asn1.Asn1PrintableString Parse(System.Xml.Linq.XElement xNode) { }
@@ -229,6 +228,11 @@
         protected override System.Xml.Linq.XElement ToXElementCore() { }
         public new static PeNet.Asn1.Asn1Set Parse(System.Xml.Linq.XElement xNode) { }
         public static PeNet.Asn1.Asn1Set ReadFrom(System.IO.Stream stream) { }
+    }
+    public abstract class Asn1StringNode : PeNet.Asn1.Asn1Node
+    {
+        protected Asn1StringNode() { }
+        public abstract string Value { get; }
     }
     public enum Asn1TagClass : byte
     {
@@ -283,14 +287,13 @@
         protected override System.Xml.Linq.XElement ToXElementCore() { }
         public static PeNet.Asn1.Asn1UtcTime ReadFrom(System.IO.Stream stream) { }
     }
-    public class Asn1Utf8String : PeNet.Asn1.Asn1Node
+    public class Asn1Utf8String : PeNet.Asn1.Asn1StringNode
     {
         public const string NODE_NAME = "UTF8";
-        public Asn1Utf8String() { }
         public Asn1Utf8String(string value) { }
         public override PeNet.Asn1.Asn1UniversalNodeType NodeType { get; }
         public override PeNet.Asn1.Asn1TagForm TagForm { get; }
-        public string Value { get; set; }
+        public override string Value { get; }
         protected override byte[] GetBytesCore() { }
         protected override System.Xml.Linq.XElement ToXElementCore() { }
         public new static PeNet.Asn1.Asn1Utf8String Parse(System.Xml.Linq.XElement xNode) { }

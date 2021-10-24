@@ -17,7 +17,7 @@ namespace PeNet.Asn1_Test {
 
         [Fact]
         public void WriteTest() {
-            var node = new Asn1BmpString { Value = "г. Ижевск, пер. Северный, д. 61" };
+            var node = new Asn1BmpString("г. Ижевск, пер. Северный, д. 61");
             var data = node.GetBytes();
             AreEqual(_etalon, data);
         }
