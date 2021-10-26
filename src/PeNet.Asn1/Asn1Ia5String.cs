@@ -3,14 +3,11 @@ using System.Text;
 using System.Xml.Linq;
 
 namespace PeNet.Asn1 {
-    public class Asn1Ia5String : Asn1Node {
+    public class Asn1Ia5String : Asn1StringNode {
 
         public const string NODE_NAME = "IA5";
 
-        public string Value { get; set; }
-
-        public Asn1Ia5String() {
-        }
+        public override string Value { get; }
 
         public Asn1Ia5String(string value) {
             Value = value;
@@ -19,7 +16,7 @@ namespace PeNet.Asn1 {
         public static Asn1Ia5String ReadFrom(Stream stream) {
             var data = new byte[stream.Length];
             stream.Read(data, 0, data.Length);
-            return new Asn1Ia5String { Value = Encoding.ASCII.GetString(data) };
+            return new Asn1Ia5String(Encoding.ASCII.GetString(data));
         }
 
         public override Asn1UniversalNodeType NodeType => Asn1UniversalNodeType.Ia5String;
@@ -35,9 +32,8 @@ namespace PeNet.Asn1 {
         }
 
         public new static Asn1Ia5String Parse(XElement xNode) {
-            var res = new Asn1Ia5String {Value = xNode.Value.Trim()};
-            //todo should it be trimmed?
-            return res;
+            var value = xNode.Value.Trim(); //todo should it be trimmed?
+            return new Asn1Ia5String(value);
         }
     }
 }

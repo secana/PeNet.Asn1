@@ -3,11 +3,15 @@ using System.Text;
 using System.Xml.Linq;
 
 namespace PeNet.Asn1 {
-    public class Asn1BmpString: Asn1Node {
+    public class Asn1BmpString: Asn1StringNode {
 
         public const string NODE_NAME = "BMPString";
 
-        public string Value { get; set; }
+        public override string Value { get; }
+
+        public Asn1BmpString(string value) {
+            Value = value;
+        }
 
         public static Asn1BmpString ReadFrom(Stream stream) {
             if (stream.Length % 2 != 0)
@@ -25,7 +29,7 @@ namespace PeNet.Asn1 {
                 result.Append((char)((firstByte << 8) | secondByte));
             }
 
-            return new Asn1BmpString { Value = result.ToString() };
+            return new Asn1BmpString(result.ToString());
         }
 
         public override Asn1UniversalNodeType NodeType => Asn1UniversalNodeType.BmpString;
@@ -48,9 +52,8 @@ namespace PeNet.Asn1 {
         }
 
         public new static Asn1BmpString Parse(XElement xNode) {
-            var res = new Asn1BmpString();
-            res.Value = xNode.Value.Trim(); //todo should it be trimmed?
-            return res;
+            var value = xNode.Value.Trim(); //todo should it be trimmed?
+            return new Asn1BmpString(value);
         }
     }
 }

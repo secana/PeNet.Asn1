@@ -19,7 +19,7 @@ namespace PeNet.Asn1_Test {
         public void WriteTest() {
             var node = new Asn1Sequence();
             node.Nodes.Add(new Asn1ObjectIdentifier("2.5.4.10"));
-            node.Nodes.Add(new Asn1PrintableString { Value = "TestOrg" });
+            node.Nodes.Add(new Asn1PrintableString("TestOrg"));
             var data = node.GetBytes();
             AreEqual(_etalon, data);
         }
