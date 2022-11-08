@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFrameworks>net6</TargetFrameworks>
     <IsPackable>false</IsPackable>
     <AssemblyName>PeNet.Asn1_Test</AssemblyName>
     <RootNamespace>PeNet.Asn1_Test</RootNamespace>
