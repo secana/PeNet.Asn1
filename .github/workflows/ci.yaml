@@ -12,7 +12,6 @@ on:
       - devel
 
 
-
 jobs:
   build-test:
     name: Build and Test
@@ -32,26 +31,25 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    # needs:
-    #   - build-test
-    if: startsWith(github.ref, 'refs/tags/v')
+    needs:
+      - build-test
+#    if: startsWith(github.ref, 'refs/tags/v')
 
     steps:
-      - name: Get Version
-        uses: battila7/get-version-action@v2
-
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7'
-
-      - name: Print Version
-        run: echo ${{steps.get_version.outputs.version-without-v}}
+          
+      - name: Extract Version
+        run: |
+          echo "VERSION=${GITHUB_REF#refs/*/v}" >> $GITHUB_ENV
+          echo $VERSION
 
       - name: Replace Version
-        run: sed -i 's|<Version>0.0.0</Version>|'"${steps.get_version.outputs.version-without-v}"'|' ./src/PeNet.Asn1/PeNet.Asn1.csproj
+        run: sed -i 's|<Version>0.0.0</Version>|'"$VERSION"'|' src/PeNet.Asn1/PeNet.Asn1.csproj
 
       - name: Package
         run: dotnet pack -o artifacts
       
-      # - name: Publish
-      #   run: dotnet nuget push artifacts/*.nupkg -k $secrets.NUGET_API_KEY
+#      - name: Publish
+#        run: dotnet nuget push artifacts/*.nupkg -k $secrets.NUGET_API_KEY
