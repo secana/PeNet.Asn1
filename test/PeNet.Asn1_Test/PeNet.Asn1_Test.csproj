@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net7</TargetFrameworks>
+    <TargetFrameworks>net8</TargetFrameworks>
     <IsPackable>false</IsPackable>
     <AssemblyName>PeNet.Asn1_Test</AssemblyName>
     <RootNamespace>PeNet.Asn1_Test</RootNamespace>

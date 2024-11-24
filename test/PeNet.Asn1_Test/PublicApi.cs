@@ -6,7 +6,6 @@ using Xunit;
 
 namespace PeNet.Asn1_Test
 {
-    [UsesVerify]
     public class PublicApi
     {
         [Fact]
