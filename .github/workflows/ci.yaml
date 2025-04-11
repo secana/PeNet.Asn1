@@ -52,7 +52,7 @@ jobs:
         run: sed -i 's|<Version>0.0.0</Version>|'"<Version>$VERSION</Version>"'|' src/PeNet.Asn1/PeNet.Asn1.csproj
   
       - name: Package
-        run: dotnet pack -o artifacts
+        run: dotnet pack -c Release -o artifacts
       
       - name: Publish
         run: dotnet nuget push artifacts/*.nupkg --source https://api.nuget.org/v3/index.json -k $secrets.NUGET_API_KEY
